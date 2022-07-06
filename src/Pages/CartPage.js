@@ -3,21 +3,31 @@ import { deviceSize } from "../constants";
 import EmptyCart from "../Components/Cart/EmptyCart";
 import CartItems from "../Components/Cart/CartItems";
 import Button from "../Components/Common/Button";
+import { useContext } from "react";
+import { StoreContext } from "../Services/StoreProvider";
 const Cart = () => {
+  const { cart } = useContext(StoreContext);
+
+  const isCartEmpty = cart.length === 0;
   return (
     <StyledCartWrapper>
       <CartItemsWrapper>
         <StyledCartTitle>My cart</StyledCartTitle>
-        <CartItems></CartItems>
+        {isCartEmpty ? (
+          <EmptyCart />
+        ) : (
+          <>
 
-        {/* <EmptyCart /> */}
-        <StyledCheckoutWrapper>
-          <StyledTotalWrapper>
-            <StyledSubtotal>SubTotal</StyledSubtotal>
-            <StyledSubtotalPrice>176 ILS</StyledSubtotalPrice>
-          </StyledTotalWrapper>
-          <StyledCheckoutButton>CHECKOUT</StyledCheckoutButton>
-        </StyledCheckoutWrapper>
+            <CartItems cart={cart}></CartItems>
+            <StyledCheckoutWrapper>
+              <StyledTotalWrapper>
+                <StyledSubtotal>SubTotal</StyledSubtotal>
+                <StyledSubtotalPrice>176 ILS</StyledSubtotalPrice>
+              </StyledTotalWrapper>
+              <StyledCheckoutButton>CHECKOUT</StyledCheckoutButton>
+            </StyledCheckoutWrapper>
+          </>
+        )}
       </CartItemsWrapper>
     </StyledCartWrapper>
   );
@@ -58,7 +68,7 @@ const StyledCartWrapper = styled.div`
   background-color: #fff;
   padding: 40px 24px 0;
   font-family: Assistant;
-  height: calc(100vh - 78px - 40px );
+  height: calc(100vh - 78px - 40px);
   position: relative;
   @media (max-width: ${deviceSize.mobile}) {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16);

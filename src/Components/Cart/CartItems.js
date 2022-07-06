@@ -1,59 +1,22 @@
 import styled from "styled-components";
 import CartItem from "./CartItem";
 import { deviceSize } from "../../constants";
+import { StoreContext } from "../../Services/StoreProvider";
+import { useContext } from "react";
+
 const CartItems = () => {
+  const { cart, addItemToCart } = useContext(StoreContext);
+
   return (
     <StyledCartItemsWrapper>
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-
+      {cart.map((item) => (
+        <CartItem
+          name={item.name}
+          price={item.price}
+          image={item.image}
+          quantity={item.quantity}
+        />
+      ))}
     </StyledCartItemsWrapper>
   );
 };
@@ -64,7 +27,6 @@ const StyledCartItemsWrapper = styled.div`
   gap: 26px;
   margin-top: 34px;
   overflow-y: auto;
-  
 
   @media (max-width: ${deviceSize.mobile}) {
     padding: 0px 18px;
@@ -73,7 +35,6 @@ const StyledCartItemsWrapper = styled.div`
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-
   }
 `;
 

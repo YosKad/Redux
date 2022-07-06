@@ -5,20 +5,19 @@ import { StoreContext } from "../../Services/StoreProvider";
 import { useContext } from "react";
 
 const ItemsList = () => {
-
-  const { items } = useContext(StoreContext);
+  const { items, addItemToCart } = useContext(StoreContext);
 
   return (
     <ItemsListWrapper>
-      {items.map( item => 
-      <ItemCard
-      key={item.id}
-      image={item.image}
-      name={item.name}
-      price={item.price}
-    />
-
-      )}
+      {items.map((item) => (
+        <ItemCard
+          key={item.id}
+          image={item.image}
+          name={item.name}
+          price={item.price}
+          onAddToBag={() => addItemToCart(item)}
+        />
+      ))}
     </ItemsListWrapper>
   );
 };
@@ -33,8 +32,7 @@ const ItemsListWrapper = styled.div`
   @media (max-width: ${deviceSize.mobile}) {
     gap: 20px 18px;
     margin-bottom: 89px;
-
-}
+  }
 `;
 
 export default ItemsList;

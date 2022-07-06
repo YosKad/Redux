@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Button from "../Common/Button"
 import { deviceSize } from "../../constants";
-const ItemCard = ({ image, name, price }) => {
+const ItemCard = ({ image, name, price, onAddToBag }) => {
   return (
     <>
       <StyledItemWrapper>
         <StyledItemImage src={image}></StyledItemImage>
         <StyledItemName>{name}</StyledItemName>
         <StyledItemPrice>{price} ILS</StyledItemPrice>
-        <StyledAddToBagButton>ADD TO BAG</StyledAddToBagButton>
+        <StyledAddToBagButton onClick={onAddToBag}>ADD TO BAG</StyledAddToBagButton>
       </StyledItemWrapper>
     </>
   );

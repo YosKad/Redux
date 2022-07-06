@@ -18,12 +18,19 @@ export const StoreProvider = ({ children }) => {
     }
 
   }
+
+  const addItemToCart = (item) => {
+    console.log("Add Item", item);
+  }
+
+
   useEffect ( () => {
     setStoreItems();
   }, []);
   const value = {
     items,
     cart,
+    addItemToCart
   };
   return (
     <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
