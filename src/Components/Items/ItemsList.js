@@ -1,60 +1,24 @@
 import styled from "styled-components";
 import ItemCard from "./ItemCard";
 import { deviceSize } from "../../constants";
+import { StoreContext } from "../../Services/StoreProvider";
+import { useContext } from "react";
+
 const ItemsList = () => {
+
+  const { items } = useContext(StoreContext);
+
   return (
     <ItemsListWrapper>
+      {items.map( item => 
       <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="890 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
+      key={item.id}
+      image={item.image}
+      name={item.name}
+      price={item.price}
+    />
 
-<ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
+      )}
     </ItemsListWrapper>
   );
 };

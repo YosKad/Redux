@@ -7,7 +7,7 @@ const ItemCard = ({ image, name, price }) => {
       <StyledItemWrapper>
         <StyledItemImage src={image}></StyledItemImage>
         <StyledItemName>{name}</StyledItemName>
-        <StyledItemPrice>{price}</StyledItemPrice>
+        <StyledItemPrice>{price} ILS</StyledItemPrice>
         <StyledAddToBagButton>ADD TO BAG</StyledAddToBagButton>
       </StyledItemWrapper>
     </>

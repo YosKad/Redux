@@ -2,6 +2,8 @@ import styled from "styled-components";
 import ItemsList from "../Components/Items/ItemsList";
 import { deviceSize } from "../constants";
 const ItemsPage = () => {
+
+
   return (
     <StyledItemsPageWrapper>
       <StyledCategoryName>Best sellers</StyledCategoryName>
