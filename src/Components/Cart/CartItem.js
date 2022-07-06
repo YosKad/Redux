@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import DeleteButtonImage from "../../Images/delete.svg";
 import { deviceSize } from "../../constants";
-const CartItem = ({ name, price, image, quantity }) => {
+const CartItem = ({ name, price, image, quantity, onRemoveItem, onReduce, onAdd }) => {
   return (
     <StyledCartItemWrapper>
       <StyledCartItemImage src={image}></StyledCartItemImage>
       <StyledCartItemDetailsWrapper>
         <StyledCartItemTitle>{name}</StyledCartItemTitle>
         <StyledCartItemPrice>{price} ILS</StyledCartItemPrice>
-        <StyledCartItemQuantity>- {quantity} +</StyledCartItemQuantity>
+        <StyledCartItemQuantity>
+          <StyledQuantity onClick={onReduce}>-</StyledQuantity>
+          <StyledQuantity>{quantity}</StyledQuantity>
+          <StyledQuantity onClick={onAdd}>+</StyledQuantity>
+        </StyledCartItemQuantity>
       </StyledCartItemDetailsWrapper>
-      <StyledDeleteButtonImage src={DeleteButtonImage} />
+      <StyledDeleteButtonImage onClick={onRemoveItem} src={DeleteButtonImage} />
     </StyledCartItemWrapper>
   );
 };
@@ -84,4 +88,12 @@ const StyledDeleteButtonImage = styled.img`
   } ;
 `;
 
+const StyledQuantity = styled.button`
+  cursor: pointer;
+  color: #808285;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+
+`;
 export default CartItem;

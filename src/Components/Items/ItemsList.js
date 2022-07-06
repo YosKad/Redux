@@ -5,16 +5,17 @@ import { StoreContext } from "../../Services/StoreProvider";
 import { useContext } from "react";
 
 const ItemsList = () => {
-  const { items, addItemToCart } = useContext(StoreContext);
+  const { storeItems, addItemToCart } = useContext(StoreContext);
 
   return (
     <ItemsListWrapper>
-      {items.map((item) => (
+      {storeItems.map((item) => (
         <ItemCard
           key={item.id}
           image={item.image}
           name={item.name}
           price={item.price}
+          quantity={item.quantity}
           onAddToBag={() => addItemToCart(item)}
         />
       ))}

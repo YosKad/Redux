@@ -6,7 +6,18 @@ import Button from "../Components/Common/Button";
 import { useContext } from "react";
 import { StoreContext } from "../Services/StoreProvider";
 const Cart = () => {
-  const { cart } = useContext(StoreContext);
+  const { cart, checkout } = useContext(StoreContext);
+
+  const getCartSubtotal = () => {
+    let sum = 0;
+    for (const item of cart) {
+      sum += item.quantity * item.price;
+    }
+
+    return sum;
+  }
+
+  const sum = getCartSubtotal();
 
   const isCartEmpty = cart.length === 0;
   return (
@@ -17,14 +28,13 @@ const Cart = () => {
           <EmptyCart />
         ) : (
           <>
-
             <CartItems cart={cart}></CartItems>
             <StyledCheckoutWrapper>
               <StyledTotalWrapper>
                 <StyledSubtotal>SubTotal</StyledSubtotal>
-                <StyledSubtotalPrice>176 ILS</StyledSubtotalPrice>
+                <StyledSubtotalPrice>{sum} ILS</StyledSubtotalPrice>
               </StyledTotalWrapper>
-              <StyledCheckoutButton>CHECKOUT</StyledCheckoutButton>
+              <StyledCheckoutButton onClick={checkout}>CHECKOUT</StyledCheckoutButton>
             </StyledCheckoutWrapper>
           </>
         )}
@@ -41,12 +51,12 @@ const CartItemsWrapper = styled.div`
   @media (min-width: ${deviceSize.desktop}) {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 100%;
   }
 `;
 const StyledCheckoutWrapper = styled.div`
-  margin-top: 5px;
+  margin-top: auto;
   @media (max-width: ${deviceSize.mobile}) {
     padding: 0px 18px;
   }

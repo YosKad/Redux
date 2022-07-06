@@ -5,16 +5,20 @@ import { StoreContext } from "../../Services/StoreProvider";
 import { useContext } from "react";
 
 const CartItems = () => {
-  const { cart, addItemToCart } = useContext(StoreContext);
+  const { cart, addItemToCart, removeItemFromCart } = useContext(StoreContext);
 
   return (
     <StyledCartItemsWrapper>
       {cart.map((item) => (
         <CartItem
+          key={item.id}
           name={item.name}
           price={item.price}
           image={item.image}
           quantity={item.quantity}
+          onRemoveItem={() => removeItemFromCart(item, true)}
+          onReduce={() => removeItemFromCart(item)}
+          onAdd={() => addItemToCart(item)}
         />
       ))}
     </StyledCartItemsWrapper>
@@ -26,6 +30,7 @@ const StyledCartItemsWrapper = styled.div`
   flex-direction: column;
   gap: 26px;
   margin-top: 34px;
+  height: 100%;
   overflow-y: auto;
 
   @media (max-width: ${deviceSize.mobile}) {
