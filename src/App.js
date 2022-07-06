@@ -8,22 +8,30 @@ import ItemsPage from "./Pages/ItemsPage";
 import { deviceSize } from "./constants";
 function App() {
   return (
-    <div className="App">
+    <StyledAppWrapper>
       <Header />
       <StyledContentWrapper>
         <ItemsPage />
         <CartPage />
       </StyledContentWrapper>
-    </div>
+    </StyledAppWrapper>
   );
 }
 
 const StyledContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  height: 100%;
+
 
   @media (max-width: ${deviceSize.mobile}) {
     flex-direction: column-reverse;
   }
 `
+
+const StyledAppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
 export default App;

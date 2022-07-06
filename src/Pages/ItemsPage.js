@@ -13,10 +13,8 @@ const ItemsPage = () => {
 const StyledItemsPageWrapper = styled.div`
   padding: 64px 24px 0px 24px;
   overflow-y: auto;
-  height: calc(100vh - 78px - 64px);
 
   @media (max-width: ${deviceSize.mobile}) {
-    height: calc(100vh - 393px - 78px - 60px);
     padding: 36px 18px 0px 18px;
 
 }
