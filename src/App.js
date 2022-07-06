@@ -1,8 +1,15 @@
+/*
+homework:
+
+1. CartPage - change subtotal to useMemo instead of recalculate each render 
+2. Change Menu to use NavLink of react router.
+3. Change the project to use Typescript.
+
+*/
+
 import styled from "styled-components";
 import Header from "./Components/Header";
-import ItemCard from "./Components/Items/ItemCard";
-import ItemsList from "./Components/Items/ItemsList";
-import logo from "./logo.svg";
+
 import CartPage from "./Pages/CartPage";
 import ItemsPage from "./Pages/ItemsPage";
 import { deviceSize } from "./constants";
