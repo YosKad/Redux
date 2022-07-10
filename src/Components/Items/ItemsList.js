@@ -4,12 +4,15 @@ import { deviceSize } from "../../constants";
 import { StoreContext } from "../../Services/StoreProvider";
 import { useContext } from "react";
 
-const ItemsList = () => {
+const ItemsList = ({ filterName }) => {
   const { storeItems, addItemToCart } = useContext(StoreContext);
 
+  console.log(filterName);
+  const itemsCategory = storeItems.filter((item) => item.catagories.includes(filterName));
+  console.log(itemsCategory);
   return (
     <ItemsListWrapper>
-      {storeItems.map((item) => (
+      {itemsCategory.map((item) => (
         <ItemCard
           key={item.id}
           image={item.image}

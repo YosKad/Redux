@@ -6,24 +6,22 @@ import { useState } from "react";
 import { deviceSize } from "../../constants";
 
 const defaultMenuConfig = [
-  { id: 1, name: "BestSellers"},
-  { id: 2, name: "Clothing" },
-  { id: 3, name: "Home" },
-  { id: 4, name: "Office" },
-  { id: 5, name: "Sports" },
+  { id: 1, name: "BestSellers", url: "/best-seller"},
+  { id: 2, name: "Clothing", url: "/clothing" },
+  { id: 3, name: "Home", url: "/home" },
+  { id: 4, name: "Office", url: "/office" },
+  { id: 5, name: "Sports", url: "/sports" },
 ];
 
 const DEFAULT_MENU_ITEM = 1;
 const Header = () => {
     
-  const onMenuItemChanged = (item) => {
-    setActiveMenuItem(item.id);
-  }
+
   const [activeMenuItem, setActiveMenuItem] = useState(DEFAULT_MENU_ITEM);
   return (
     <StyledHeaderWrapper>
       <StyledLogo src={LogoImage}></StyledLogo>
-      <StyledMenu activeId={activeMenuItem} onMenuItemChanged={onMenuItemChanged}menuItems={defaultMenuConfig}></StyledMenu>
+      <StyledMenu activeId={activeMenuItem} menuItems={defaultMenuConfig}></StyledMenu>
       <StyledAccountIcon src={AccountImage}></StyledAccountIcon>
     </StyledHeaderWrapper>
   );

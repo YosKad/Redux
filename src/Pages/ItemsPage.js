@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import ItemsList from "../Components/Items/ItemsList";
 import { deviceSize } from "../constants";
-const ItemsPage = () => {
+const ItemsPage = ({category}) => {
 
 
   return (
     <StyledItemsPageWrapper>
-      <StyledCategoryName>Best sellers</StyledCategoryName>
-      <ItemsList />
+      <StyledCategoryName>{category.presentationName}</StyledCategoryName>
+      <ItemsList filterName={category.filterName} />
     </StyledItemsPageWrapper>
   );
 };

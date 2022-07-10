@@ -4,6 +4,7 @@ import { useMedia } from "../../../Hooks/useMedia";
 import menuImage from "../../../Images/menu.png";
 import Drawer from "../Drawer";
 import DrawerMenu from "./DrawerMenu";
+import { NavLink } from "react-router-dom";
 const Menu = ({
   menuItems,
   activeId,
@@ -46,6 +47,7 @@ const Menu = ({
             return (
               <MenuItem
                 key={item.id}
+                to={item.url}
                 onClick={() => onMenuItemChanged(item)}
                 active={activeId === item.id}
                 href="#"
@@ -59,15 +61,15 @@ const Menu = ({
   );
 };
 
-const MenuItem = styled.a`
+const MenuItem = styled(NavLink)`
   font-size: 20px;
-  font-weight: ${(props) => (props.active ? "600" : "normal")};
   text-decoration: none;
-  ${(props) =>
-    props.active &&
-    `
+
+  &.active {
     border-bottom: 2px solid #fff;
-    `}
+    font-weight: 600;
+  }
+
   color: #fff;
 `;
 const MenuWrapper = styled.nav`
