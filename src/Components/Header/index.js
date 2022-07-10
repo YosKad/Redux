@@ -17,11 +17,10 @@ const DEFAULT_MENU_ITEM = 1;
 const Header = () => {
     
 
-  const [activeMenuItem, setActiveMenuItem] = useState(DEFAULT_MENU_ITEM);
   return (
     <StyledHeaderWrapper>
       <StyledLogo src={LogoImage}></StyledLogo>
-      <StyledMenu activeId={activeMenuItem} menuItems={defaultMenuConfig}></StyledMenu>
+      <StyledMenu menuItems={defaultMenuConfig}></StyledMenu>
       <StyledAccountIcon src={AccountImage}></StyledAccountIcon>
     </StyledHeaderWrapper>
   );

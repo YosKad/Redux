@@ -9,7 +9,6 @@ const Menu = ({
   menuItems,
   activeId,
   className,
-  onMenuItemChanged,
   humburgerResolution = 880,
 }) => {
   const breakPoints = [
@@ -33,7 +32,6 @@ const Menu = ({
             {isDrawerOpen && (
               <Drawer>
                 <DrawerMenu
-                  onItemChanged={onMenuItemChanged}
                   menuItems={menuItems}
                   onClose={() => setIsDrawerOpen(false)}
                 />
@@ -44,11 +42,7 @@ const Menu = ({
         {breakPoint?.name === "desktop" &&
           menuItems.map((item) => {
             return (
-              <MenuItem
-                key={item.id}
-                to={item.url}
-                onClick={() => onMenuItemChanged(item)}
-              >
+              <MenuItem key={item.id} to={item.url}>
                 {item.name}
               </MenuItem>
             );
