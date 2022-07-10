@@ -21,8 +21,6 @@ const DrawerMenu = ({ activeId, menuItems, onClose, onItemChanged }) => {
             onClick={() => {
               onClose();
             }}
-            active={activeId === item.id}
-            href="#"
           >
             {item.name}
           </StyledMenuItem>

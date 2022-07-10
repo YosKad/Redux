@@ -34,7 +34,6 @@ const Menu = ({
               <Drawer>
                 <DrawerMenu
                   onItemChanged={onMenuItemChanged}
-                  activeId={activeId}
                   menuItems={menuItems}
                   onClose={() => setIsDrawerOpen(false)}
                 />
@@ -49,8 +48,6 @@ const Menu = ({
                 key={item.id}
                 to={item.url}
                 onClick={() => onMenuItemChanged(item)}
-                active={activeId === item.id}
-                href="#"
               >
                 {item.name}
               </MenuItem>
