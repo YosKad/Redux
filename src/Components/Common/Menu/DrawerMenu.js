@@ -2,7 +2,7 @@ import styled from "styled-components";
 import LogoImage from "../../../Images/logo-black.png";
 import closeImage from "../../../Images/x-icon.png";
 import logoutImage from "../../../Images/logout.png";
-
+import { NavLink } from "react-router-dom";
 const DrawerMenu = ({ activeId, menuItems, onClose, onItemChanged }) => {
   return (
     <>
@@ -17,8 +17,8 @@ const DrawerMenu = ({ activeId, menuItems, onClose, onItemChanged }) => {
       <StyledMenuItemsWrapper>
         {menuItems.map((item) => (
           <StyledMenuItem
+            to={item.url}
             onClick={() => {
-              onItemChanged(item);
               onClose();
             }}
             active={activeId === item.id}
@@ -69,18 +69,16 @@ const StyledCloseButton = styled.img`
   cursor: pointer;
 `;
 
-const StyledMenuItem = styled.a`
+const StyledMenuItem = styled(NavLink)`
   font-family: Assistant;
   font-size: 20px;
   font-weight: normal;
   color: #1a223e;
   padding-left: 4px;
   text-decoration: none;
-  ${(props) =>
-    props.active &&
-    `
-        border-left: 2px solid #1a223e;
-        font-weight: 600;
-  `}
+  &.active {
+    border-left: 2px solid #1a223e;
+    font-weight: 600;
+  }
 `;
 export default DrawerMenu;
