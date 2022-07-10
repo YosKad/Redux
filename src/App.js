@@ -14,15 +14,18 @@ import CartPage from "./Pages/CartPage";
 import ItemsPage from "./Pages/ItemsPage";
 import { deviceSize } from "./constants";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchStoreItems } from "./redux/storeSlice";
 function App() {
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.store.items);
 
   useEffect(() => {
-    dispatch(fetchStoreItems());
-  }, []);
+    if (items.length === 0) {
+      dispatch(fetchStoreItems());
+    }
+  }, [items,dispatch]);
   return (
     <StyledAppWrapper>
       <Header />
