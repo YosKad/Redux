@@ -2,7 +2,6 @@ import styled from "styled-components";
 import LogoImage from "../../Images/logo.png";
 import AccountImage from "../../Images/account_circle.png";
 import Menu from "../Common/Menu";
-import { useState } from "react";
 import { deviceSize } from "../../constants";
 
 const defaultMenuConfig = [
@@ -13,7 +12,6 @@ const defaultMenuConfig = [
   { id: 5, name: "Sports", url: "/sports" },
 ];
 
-const DEFAULT_MENU_ITEM = 1;
 const Header = () => {
     
 
