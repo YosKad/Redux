@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import ItemCard from "./ItemCard";
 import { deviceSize } from "../../constants";
-import { StoreContext } from "../../Services/StoreProvider";
-import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart } from "../../redux/storeSlice";
 
 const ItemsList = ({ filterName }) => {
-  const { storeItems, addItemToCart } = useContext(StoreContext);
+  const dispatch = useDispatch();
 
-  console.log(filterName);
-  const itemsCategory = storeItems.filter((item) => item.catagories.includes(filterName));
-  console.log(itemsCategory);
+  const storeItems = useSelector((state) => state.store.items);
+
+  const itemsCategory = storeItems.filter((item) =>
+    item.catagories.includes(filterName)
+  );
   return (
     <ItemsListWrapper>
       {itemsCategory.map((item) => (
@@ -19,7 +21,7 @@ const ItemsList = ({ filterName }) => {
           name={item.name}
           price={item.price}
           quantity={item.quantity}
-          onAddToBag={() => addItemToCart(item)}
+          onAddToBag={() => dispatch(addItemToCart(item.id))}
         />
       ))}
     </ItemsListWrapper>

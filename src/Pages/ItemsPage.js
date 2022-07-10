@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import ItemsList from "../Components/Items/ItemsList";
 import { deviceSize } from "../constants";
-const ItemsPage = ({category}) => {
-
-
+const ItemsPage = ({ category }) => {
   return (
     <StyledItemsPageWrapper>
       <StyledCategoryName>{category.presentationName}</StyledCategoryName>
@@ -18,8 +16,7 @@ const StyledItemsPageWrapper = styled.div`
 
   @media (max-width: ${deviceSize.mobile}) {
     padding: 36px 18px 0px 18px;
-
-}
+  }
 `;
 
 const StyledCategoryName = styled.h1`

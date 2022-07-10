@@ -13,74 +13,78 @@ import Header from "./Components/Header";
 import CartPage from "./Pages/CartPage";
 import ItemsPage from "./Pages/ItemsPage";
 import { deviceSize } from "./constants";
-import { StoreProvider } from "./Services/StoreProvider";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchStoreItems } from "./redux/storeSlice";
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchStoreItems());
+  }, []);
   return (
     <StyledAppWrapper>
       <Header />
       <StyledContentWrapper>
-        <StoreProvider>
-          <Routes>
-            <Route
-              path="*"
-              element={
-                <ItemsPage
-                  category={{
-                    filterName: "best-seller",
-                    presentationName: "Best Seller",
-                  }}
-                />
-              }
-            ></Route>
-            <Route
-              path="/home"
-              element={
-                <ItemsPage
-                  category={{
-                    filterName: "home",
-                    presentationName: "Home",
-                  }}
-                />
-              }
-            ></Route>
-            <Route
-              path="/office"
-              element={
-                <ItemsPage
-                  category={{
-                    filterName: "office",
-                    presentationName: "Office",
-                  }}
-                />
-              }
-            ></Route>
-            <Route
-              path="/sports"
-              element={
-                <ItemsPage
-                  category={{
-                    filterName: "sports",
-                    presentationName: "Sports",
-                  }}
-                />
-              }
-            ></Route>
-            <Route
-              path="/clothing"
-              element={
-                <ItemsPage
-                  category={{
-                    filterName: "clothing",
-                    presentationName: "Clothing",
-                  }}
-                />
-              }
-            ></Route>
-
-          </Routes>
-          <CartPage />
-        </StoreProvider>
+        <Routes>
+          <Route
+            path="*"
+            element={
+              <ItemsPage
+                category={{
+                  filterName: "best-seller",
+                  presentationName: "Best Seller",
+                }}
+              />
+            }
+          ></Route>
+          <Route
+            path="/home"
+            element={
+              <ItemsPage
+                category={{
+                  filterName: "home",
+                  presentationName: "Home",
+                }}
+              />
+            }
+          ></Route>
+          <Route
+            path="/office"
+            element={
+              <ItemsPage
+                category={{
+                  filterName: "office",
+                  presentationName: "Office",
+                }}
+              />
+            }
+          ></Route>
+          <Route
+            path="/sports"
+            element={
+              <ItemsPage
+                category={{
+                  filterName: "sports",
+                  presentationName: "Sports",
+                }}
+              />
+            }
+          ></Route>
+          <Route
+            path="/clothing"
+            element={
+              <ItemsPage
+                category={{
+                  filterName: "clothing",
+                  presentationName: "Clothing",
+                }}
+              />
+            }
+          ></Route>
+        </Routes>
+        <CartPage />
       </StyledContentWrapper>
     </StyledAppWrapper>
   );

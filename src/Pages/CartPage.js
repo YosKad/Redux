@@ -3,10 +3,12 @@ import { deviceSize } from "../constants";
 import EmptyCart from "../Components/Cart/EmptyCart";
 import CartItems from "../Components/Cart/CartItems";
 import Button from "../Components/Common/Button";
-import { useContext } from "react";
-import { StoreContext } from "../Services/StoreProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { checkout } from "../redux/storeSlice";
+
 const Cart = () => {
-  const { cart, checkout } = useContext(StoreContext);
+  const cart = useSelector((state) => state.store.cart);
+  const dispatch = useDispatch();
 
   const getCartSubtotal = () => {
     let sum = 0;
@@ -15,7 +17,7 @@ const Cart = () => {
     }
 
     return sum;
-  }
+  };
 
   const sum = getCartSubtotal();
 
@@ -34,7 +36,9 @@ const Cart = () => {
                 <StyledSubtotal>SubTotal</StyledSubtotal>
                 <StyledSubtotalPrice>{sum} ILS</StyledSubtotalPrice>
               </StyledTotalWrapper>
-              <StyledCheckoutButton onClick={checkout}>CHECKOUT</StyledCheckoutButton>
+              <StyledCheckoutButton onClick={() => dispatch(checkout())}>
+                CHECKOUT
+              </StyledCheckoutButton>
             </StyledCheckoutWrapper>
           </>
         )}
