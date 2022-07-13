@@ -35,6 +35,24 @@ export const storeSlice = createSlice({
 
       cartItem.quantity++;
     },
+
+    reduceCartItem: (state, action) => {
+      const itemId = action.payload;
+      const existingItem = state.cart.find(
+        (cartItem) => cartItem.id === itemId
+      );
+      const storeItem = state.items.find((element) => element.id === itemId
+      );
+
+      existingItem.quantity--;
+      storeItem.quantity++;
+
+      if (existingItem.quantity === 0) {
+        const newCartItems = state.cart.filter((element) => element.id !== existingItem.id);
+        state.cart = newCartItems;
+      }
+    },
+
     checkout: (state, action) => {
       state.cart = [];
     },
@@ -46,6 +64,6 @@ export const storeSlice = createSlice({
   },
 });
 
-export const { addItemToCart, checkout } = storeSlice.actions;
+export const { addItemToCart, checkout , reduceCartItem } = storeSlice.actions;
 
 export default storeSlice.reducer;
