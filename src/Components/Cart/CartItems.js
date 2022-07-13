@@ -23,7 +23,7 @@ const CartItems = () => {
           image={item.image}
           quantity={item.quantity}
           onRemoveItem={() => removeItemFromCart(item, true)}
-          onReduce={() => dispatch(removeItemFromCart(item.id))}
+          onReduce={() => dispatch(reduceCartItem(item.id))}
           onAdd={() => dispatch(addItemToCart(item.id))}
         />
       ))}
